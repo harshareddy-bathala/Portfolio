@@ -118,6 +118,28 @@ a, button {
     align-items: center;
 }
 
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile-photo {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid var(--glass-border);
+    object-fit: cover;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px var(--glass-shadow);
+}
+
+.profile-photo:hover {
+    transform: scale(1.1) rotate(5deg);
+    border-color: var(--accent-purple);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
 .logo {
     font-family: var(--font-handwritten);
     font-size: 2rem;
@@ -321,6 +343,7 @@ a, button {
     gap: 1rem;
     justify-content: center;
     animation: fadeInUp 1s ease-out 0.8s backwards;
+    flex-wrap: wrap;
 }
 
 .btn-primary, .btn-secondary {
@@ -330,6 +353,9 @@ a, button {
     font-weight: 600;
     transition: all 0.3s ease;
     border: 2px solid transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .btn-primary {
@@ -735,8 +761,7 @@ section {
     transform: translateY(-5px);
 }
 
-.contact-method i,
-.contact-icon {
+.contact-method i {
     font-size: 2rem;
     background: var(--accent-gradient);
     -webkit-background-clip: text;
@@ -744,17 +769,25 @@ section {
     background-clip: text;
 }
 
-.contact-icon svg {
+.contact-x-logo {
     width: 2rem;
     height: 2rem;
-    fill: url(#gradient);
+    min-width: 2rem;
+    fill: var(--accent-purple);
+    transition: all 0.3s ease;
 }
 
-.contact-icon {
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.contact-method:hover .contact-x-logo {
+    fill: var(--accent-pink);
+    transform: scale(1.1);
+}
+
+[data-theme="dark"] .contact-x-logo {
+    fill: var(--accent-blue);
+}
+
+[data-theme="dark"] .contact-method:hover .contact-x-logo {
+    fill: var(--accent-pink);
 }
 
 .contact-method h4 {
@@ -855,6 +888,11 @@ section {
 
     .cta-buttons {
         flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .cta-buttons a {
+        justify-content: center;
     }
 
     .projects-grid {
