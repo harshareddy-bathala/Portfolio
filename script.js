@@ -394,6 +394,51 @@ themeToggle.addEventListener('click', () => {
 });
 
 // ===============================================
+// Certificate Links Management
+// ===============================================
+// Certificate URLs - Update these with your actual certificate links
+const certificateLinks = {
+    'oci-gen-ai': 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=YOUR_CERT_ID',
+    'oci-data-science': 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=YOUR_CERT_ID',
+    'ccna': 'https://www.credly.com/badges/YOUR_BADGE_ID'
+};
+
+// Add click handlers to certificate links
+document.querySelectorAll('.cert-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const certId = link.getAttribute('data-cert');
+        const certUrl = certificateLinks[certId];
+        
+        if (certUrl && !certUrl.includes('YOUR_')) {
+            window.open(certUrl, '_blank');
+        } else {
+            // Show a tooltip if link not configured
+            const tooltip = document.createElement('div');
+            tooltip.textContent = 'Certificate link not configured yet';
+            tooltip.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(168, 85, 247, 0.95);
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                font-weight: 600;
+                z-index: 10000;
+                animation: fadeInOut 2s ease;
+            `;
+            document.body.appendChild(tooltip);
+            
+            setTimeout(() => {
+                tooltip.remove();
+            }, 2000);
+        }
+    });
+});
+
+// ===============================================
 // Console Easter Egg
 // ===============================================
 console.log('%c👋 Hey there!', 'font-size: 24px; font-weight: bold; color: #667eea;');
