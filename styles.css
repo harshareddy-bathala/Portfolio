@@ -52,6 +52,20 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     transition: background 0.5s ease, color 0.3s ease;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23667eea" stroke-width="2"><circle cx="12" cy="12" r="8" opacity="0.3"/><circle cx="12" cy="12" r="3"/></svg>') 12 12, auto;
+}
+
+a, button {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23a855f7" stroke-width="2.5"><circle cx="12" cy="12" r="10" opacity="0.5"/><circle cx="12" cy="12" r="5" fill="%23a855f7"/></svg>') 12 12, pointer;
+}
+
+[data-theme="dark"] body {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%238b5cf6" stroke-width="2"><circle cx="12" cy="12" r="8" opacity="0.3"/><circle cx="12" cy="12" r="3"/></svg>') 12 12, auto;
+}
+
+[data-theme="dark"] a,
+[data-theme="dark"] button {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23d946ef" stroke-width="2.5"><circle cx="12" cy="12" r="10" opacity="0.5"/><circle cx="12" cy="12" r="5" fill="%23d946ef"/></svg>') 12 12, pointer;
 }
 
 .container {
@@ -288,6 +302,11 @@ body {
     color: var(--text-primary);
     font-size: 1.5rem;
     transition: all 0.3s ease;
+}
+
+.social-links a svg {
+    width: 24px;
+    height: 24px;
 }
 
 .social-links a:hover {
@@ -716,8 +735,22 @@ section {
     transform: translateY(-5px);
 }
 
-.contact-method i {
+.contact-method i,
+.contact-icon {
     font-size: 2rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.contact-icon svg {
+    width: 2rem;
+    height: 2rem;
+    fill: url(#gradient);
+}
+
+.contact-icon {
     background: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -741,16 +774,28 @@ section {
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(20px);
     padding: 2rem;
-    text-align: center;
     border-top: 1px solid var(--glass-border);
 }
 
-.footer p:first-child {
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-text {
+    text-align: center;
+    flex: 1;
+}
+
+.footer-text p:first-child {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
 }
 
-.footer p:last-child {
+.footer-text p:last-child {
     color: var(--text-secondary);
     font-size: 0.9rem;
 }
@@ -777,19 +822,23 @@ section {
         left: 0;
     }
     
-    .theme-toggle {
-        width: 50px;
-        height: 50px;
-        bottom: 1.5rem;
-        right: 1.5rem;
-    }
-    
-    .theme-toggle i {
-        font-size: 1.2rem;
-    }
+
 
     .hamburger {
         display: flex;
+    }
+    
+    .footer-content {
+        justify-content: center;
+    }
+    
+    .footer-text {
+        order: 2;
+        width: 100%;
+    }
+    
+    .theme-toggle {
+        order: 1;
     }
 
     .hero h1 {
@@ -839,12 +888,8 @@ section {
    Dark Mode Toggle
    =============================================== */
 .theme-toggle {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    z-index: 1000;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background: var(--glass-bg);
     backdrop-filter: blur(20px);
@@ -867,7 +912,7 @@ section {
 }
 
 .theme-toggle i {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: var(--text-primary);
     transition: all 0.3s ease;
 }
