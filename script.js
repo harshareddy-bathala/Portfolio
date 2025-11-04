@@ -396,11 +396,10 @@ themeToggle.addEventListener('click', () => {
 // ===============================================
 // Certificate Links Management
 // ===============================================
-// Certificate URLs - Update these with your actual certificate links
+// Certificate URLs - Oracle badges
 const certificateLinks = {
-    'oci-gen-ai': 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=YOUR_CERT_ID',
-    'oci-data-science': 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=YOUR_CERT_ID',
-    'ccna': 'https://www.credly.com/badges/YOUR_BADGE_ID'
+    'oci-gen-ai': 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=D825ECBD5C99A9BB2C7A1951FA0F4682318BE509C7BB888158DECE29F1A4CCA1',
+    'oci-data-science': 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=F39F379DCC150404DBD779BA2F3F9B6CAFD6913BCEFC868337AEE68880CF6F31'
 };
 
 // Add click handlers to certificate links
