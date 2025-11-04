@@ -6,10 +6,13 @@ const navLinks = document.querySelector('.nav-links');
 const links = document.querySelectorAll('.nav-links a');
 
 hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+    const isActive = navLinks.classList.toggle('active');
     
     // Animate hamburger
     hamburger.classList.toggle('active');
+    
+    // Update aria-expanded for accessibility
+    hamburger.setAttribute('aria-expanded', isActive);
 });
 
 // Close mobile menu when clicking a link
@@ -17,6 +20,7 @@ links.forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('active');
         hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
     });
 });
 
