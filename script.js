@@ -84,9 +84,7 @@ animateElements.forEach(el => {
 const roles = [
     'Computer Science Student',
     'AI & DevOps Enthusiast',
-    'Full Stack Developer',
-    'Automation Expert',
-    'Cloud Native Developer'
+    'Full Stack Developer'
 ];
 
 let roleIndex = 0;
