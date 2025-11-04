@@ -402,37 +402,15 @@ const certificateLinks = {
     'oci-data-science': 'https://catalog-education.oracle.com/pls/certview/sharebadge?id=F39F379DCC150404DBD779BA2F3F9B6CAFD6913BCEFC868337AEE68880CF6F31'
 };
 
-// Add click handlers to certificate links
-document.querySelectorAll('.cert-link').forEach(link => {
+// Add click handlers to certificate links (only for Oracle badges)
+document.querySelectorAll('.cert-link[data-cert]').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
         const certId = link.getAttribute('data-cert');
         const certUrl = certificateLinks[certId];
         
-        if (certUrl && !certUrl.includes('YOUR_')) {
+        if (certUrl) {
             window.open(certUrl, '_blank');
-        } else {
-            // Show a tooltip if link not configured
-            const tooltip = document.createElement('div');
-            tooltip.textContent = 'Certificate link not configured yet';
-            tooltip.style.cssText = `
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: rgba(168, 85, 247, 0.95);
-                color: white;
-                padding: 1rem 2rem;
-                border-radius: 10px;
-                font-weight: 600;
-                z-index: 10000;
-                animation: fadeInOut 2s ease;
-            `;
-            document.body.appendChild(tooltip);
-            
-            setTimeout(() => {
-                tooltip.remove();
-            }, 2000);
         }
     });
 });
